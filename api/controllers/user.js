@@ -38,7 +38,8 @@ exports.user_register = (req, res, next) => {
                                     { expiresIn: "24h" }
                                 );
                                 res.status(201).json({
-                                    message: 'User cratead successfully'
+                                    message: 'User cratead successfully',
+                                    token: token
                                 })
                             })
                             .catch(err => {
