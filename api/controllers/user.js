@@ -28,7 +28,15 @@ exports.user_register = (req, res, next) => {
                         });  
                         user.save()
                             .then(result => {
-                                console.log(result)
+                                console.log(result);
+                                const token = jwt.sign({
+                                    username: user.username,
+                                    email: user.email,
+                                    userId: user._id
+                                    }, 
+                                    process.env.JWT_KEY,
+                                    { expiresIn: "24h" }
+                                );
                                 res.status(201).json({
                                     message: 'User cratead successfully'
                                 })
