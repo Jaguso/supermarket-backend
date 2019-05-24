@@ -11,7 +11,8 @@ exports.list_create = (req, res, next) => {
         .then(result => {
             console.log(result);
             res.status(201).json({
-                response
+                listId: result._id,
+                message: 'list created successfully'
             })
         })
         .catch(err => {
